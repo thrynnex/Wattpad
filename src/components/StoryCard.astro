@@ -1,0 +1,13 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  cover_url: string;
+}
+
+const { id, title, cover_url } = Astro.props;
+---
+<a href={`/story/${id}`} class="block group">
+  <img src={cover_url} alt={`Cover for ${title}`} class="w-full aspect-[2/3] object-cover rounded-lg shadow-lg group-hover:scale-105 transition-transform duration-300" />
+  <h3 class="mt-2 font-semibold text-gray-200 group-hover:text-indigo-400">{title}</h3>
+</a>
