@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StoryCard from '../components/StoryCard.astro';
+import homeData from '../../data/home.json';
+---
+
+<Layout title="StoryShelf - Home">
+	<h1 class="text-3xl font-bold mb-6 text-white">Trending Stories</h1>
+	<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+		{homeData.map(story => (
+			<StoryCard id={story.id} title={story.title} cover_url={story.cover_url} />
+		))}
+	</div>
+</Layout>
