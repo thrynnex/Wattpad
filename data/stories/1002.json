@@ -1,0 +1,22 @@
+{
+  "id": "1002",
+  "title": "Ocean's Echo",
+  "author": "Maria Garcia",
+  "cover_url": "https://placehold.co/300x450/007991/FFF?text=Ocean's\\nEcho",
+  "description": "A marine biologist finds a lost city, but its secrets were meant to stay buried.",
+  "tags": [
+    "adventure",
+    "mystery",
+    "fantasy"
+  ],
+  "chapters": [
+    {
+      "id": "c201",
+      "title": "Chapter I: The Dive"
+    },
+    {
+      "id": "c202",
+      "title": "Chapter II: The Murmur"
+    }
+  ]
+}

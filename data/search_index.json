@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1001",
+    "title": "The Last Technomancer",
+    "author": "Alex Ray",
+    "tags": [
+      "sci-fi",
+      "magic",
+      "dystopian"
+    ]
+  },
+  {
+    "id": "1002",
+    "title": "Ocean's Echo",
+    "author": "Maria Garcia",
+    "tags": [
+      "adventure",
+      "mystery",
+      "fantasy"
+    ]
+  }
+]

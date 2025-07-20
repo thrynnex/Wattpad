@@ -1,0 +1,22 @@
+{
+  "id": "1001",
+  "title": "The Last Technomancer",
+  "author": "Alex Ray",
+  "cover_url": "https://placehold.co/300x450/2E2A4F/FFF?text=The+Last\\nTechnomancer",
+  "description": "In a world where magic has faded, a young engineer discovers she can talk to machines.",
+  "tags": [
+    "sci-fi",
+    "magic",
+    "dystopian"
+  ],
+  "chapters": [
+    {
+      "id": "c101",
+      "title": "Part 1: The Ghost"
+    },
+    {
+      "id": "c102",
+      "title": "Part 2: The Signal"
+    }
+  ]
+}
