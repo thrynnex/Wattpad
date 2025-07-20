@@ -1,0 +1,56 @@
+name: Scrape Data & Deploy Site
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # Runs every 6 hours
+  workflow_dispatch: {} # Allows manual triggering from the Actions tab
+
+jobs:
+  scrape_data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper
+        run: python scripts/scraper.py
+
+      - name: Commit and push if data changed
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: ' chore: [Automated] Update story data'
+          file_pattern: data/*.json data/**/*.json
+
+  build_and_deploy:
+    needs: scrape_data
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed to deploy to gh-pages
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js and pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Install Node.js dependencies
+        run: pnpm install
+
+      - name: Build static site
+        run: pnpm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
