@@ -1,0 +1,21 @@
+---
+import fs from 'fs';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const chapterFiles = fs.readdirSync('data/chapters');
+  return chapterFiles.map(file => {
+    const chapterId = file.replace('.json', '');
+    return { params: { id: chapterId } };
+  });
+}
+
+const { id } = Astro.params;
+const chapter = JSON.parse(fs.readFileSync(`data/chapters/${id}.json`, 'utf-8'));
+---
+<Layout title={chapter.title}>
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-4xl font-bold text-center mb-8">{chapter.title}</h1>
+    <article class="prose prose-invert lg:prose-xl mx-auto text-gray-300 leading-relaxed" set:html={chapter.content} />
+  </div>
+</Layout>
